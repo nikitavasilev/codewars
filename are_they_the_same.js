@@ -44,9 +44,27 @@ If a or b are empty then the result is self-evident.
 */
 
 function comp(array1, array2) {
+  if (array1 !== null && array2 !== null) {
+    array1.sort(function(a, b){return a - b});
+    array2.sort(function(a, b){return a - b});
 
+    if (array1.length === array2.length) {
+      i = 0;
+      while (i < array1.length) {
+        if (!(array1[i] * array1[i] === array2[i])) {
+          return false;
+        }
+        i++;
+      }
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    return false;
+  }
 }
 
-a1 = [121, 144, 19, 161, 19, 144, 19, 11];
-a2 = [11*11, 121*121, 144*144, 19*19, 161*161, 19*19, 144*144, 19*19];
-Test.assertEquals(comp(a1, a2), true);
+arr1 = [121, 144, 19, 161, 19, 144, 19, 11];
+arr2 = [121, 361, 361, 361, 14641, 20736, 20736, 25921];
+comp(arr1, arr2);
