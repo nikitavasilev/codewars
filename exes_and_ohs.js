@@ -15,5 +15,22 @@ XO("zzoo") => false
 */
 
 function XO(str) {
-  //code here
+  let x, o, result;
+  x = str.match(/x/gi);
+  o = str.match(/o/gi);
+
+  if (x === null && o === null) {
+    result = true;
+  } else if ((x != null && o != null) && (x.length == o.length)) {
+    result = true;
+  } else {
+    result = false;    
+  }
+  return result;
 }
+
+XO('ooxx');
+XO('xooxx');
+XO('ooxXm');
+XO('zpzpzpp');
+XO('zzoo');
