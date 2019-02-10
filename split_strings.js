@@ -10,7 +10,12 @@ Examples:
 solution('abc') // should return ['ab', 'c_']
 solution('abcdef') // should return ['ab', 'cd', 'ef']
 */
+'use strict';
 
 function solution(str) {
-  
+  const newStr = str.match(/.{1,2}/g);
+  if (str.length % 2 !== 0) newStr[newStr.length-1] += '_';
+  return newStr;
 }
+
+solution('abcde');
