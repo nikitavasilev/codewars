@@ -19,7 +19,24 @@ Examples:
 'use strict';
 
 function order(words) {
+  words = words.split(' ');
+  const temp = [];
+  let i = 0;
+  let j = 1;
 
+  while (i < words.length) {
+    let re = new RegExp(j, 'g');
+    if (words[i].match(re)) {
+      temp.push(words[i]);
+      i = 0;
+      j++;
+      continue;
+    }
+    i++;
+  }
+  words = temp;
+  return words.join(' ');
 }
 
 order('is2 Thi1s T4est 3a');
+order('4of Fo1r pe6ople g3ood th5e the2');
