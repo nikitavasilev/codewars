@@ -32,11 +32,28 @@ You will not be tested with invalid input (input will always be an array).
 Order of the face (eyes, nose, mouth) elements will always be the same
 */
 
+'use strict';
+
 //return the total number of smiling faces in the array
 function countSmileys(arr) {
+  let result = 0;
+  const mouth = [')', 'D'];
+  const nose = ['-', '~'];
+  const eyes = [':', ';'];
 
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < eyes.length; j++) {
+      for (let k = 0; k < nose.length; k++) {
+        if (arr[i] === (eyes[j] + mouth[k])) result++;
+        for (let l = 0; l < mouth.length; l++) {
+          if (arr[i] === (eyes[j] + nose[l] + mouth[k])) result++;
+        }
+      }
+    }
+  }
+  return result;
 }
 
-countSmileys([':)', ';(', ';}', ':-D']);
-countSmileys([';D', ':-(', ':-)', ';~)']);
-countSmileys([';]', ':[', ';*', ':$', ';-D']);
+console.log(countSmileys([':)', ';(', ';}', ':-D']));
+console.log(countSmileys([';D', ':-(', ':-)', ';~)']));
+console.log(countSmileys([';]', ':[', ';*', ':$', ';-D']));
