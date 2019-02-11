@@ -18,6 +18,8 @@ rgb(148, 0, 211) // returns 9400D3
 'use strict';
 
 function rgb(r, g, b) {
+  
+  // rgb = base-10 system, hex = base-16 system
   const hex = [
     '0', '1', '2', '3', '4', '5', '6', '7', '8',
     '9', 'A', 'B', 'C', 'D', 'E', 'F']; // A = 11, F = 16
@@ -32,8 +34,8 @@ function rgb(r, g, b) {
     b = 255;
   }
 
-  rQuotient = Math.floor(r / 16);
-  rReminder = ((r / 16) % 1) * 16;
+  rQuotient = Math.floor(r / 16); // first digit of red
+  rReminder = ((r / 16) % 1) * 16; // second digit of the 6-digit hex code
   gQuotient = Math.floor(g / 16);
   gReminder = ((g / 16) % 1) * 16;
   bQuotient = Math.floor(b / 16);
