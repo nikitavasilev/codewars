@@ -20,26 +20,27 @@ rgb(148, 0, 211) // returns 9400D3
 function rgb(r, g, b) {
   
   // rgb = base-10 system, hex = base-16 system
+  const RGB = [r, g, b];
   const hex = [
     '0', '1', '2', '3', '4', '5', '6', '7', '8',
     '9', 'A', 'B', 'C', 'D', 'E', 'F']; // A = 11, F = 16
   let rQuotient, rReminder, gQuotient,
     gReminder, bQuotient, bReminder;
 
-  if (r > 255) {
-    r = 255;
-  } else if (g > 255) {
-    g = 255;
-  } else if (b > 255) {
-    b = 255;
+  for (let i = 0; i < RGB.length; i++) {
+    if (RGB[i] > 255) {
+      RGB[i] = 255;
+    } else if (RGB[i] < 0) {
+      RGB[i] = 0;
+    }
   }
 
-  rQuotient = Math.floor(r / 16); // first digit of red
-  rReminder = ((r / 16) % 1) * 16; // second digit of the 6-digit hex code
-  gQuotient = Math.floor(g / 16);
-  gReminder = ((g / 16) % 1) * 16;
-  bQuotient = Math.floor(b / 16);
-  bReminder = ((b / 16) % 1) * 16;
+  rQuotient = Math.floor(RGB[0] / 16); // first digit of red
+  rReminder = ((RGB[0] / 16) % 1) * 16; // second digit of the 6-digit hex code
+  gQuotient = Math.floor(RGB[1] / 16);
+  gReminder = ((RGB[1] / 16) % 1) * 16;
+  bQuotient = Math.floor(RGB[2] / 16);
+  bReminder = ((RGB[2] / 16) % 1) * 16;
 
   const result = 
     hex[rQuotient] + hex[rReminder] +
@@ -52,3 +53,15 @@ console.log(rgb(255, 255, 255)); // returns FFFFFF
 console.log(rgb(255, 255, 300)); // returns FFFFFF
 console.log(rgb(0,0,0)); // returns 000000
 console.log(rgb(148, 0, 211)); // returns 9400D3
+
+// Better solution:
+
+function rgb(r, g, b) {
+  return toHex(r) + toHex(g) + toHex(b);
+}
+
+function toHex(d) {
+  if (d < 0) return "00";
+  if (d > 255) return "FF";
+  return ('0' + (Number(d).toString(16))).slice(-2).toUpperCase();
+}
