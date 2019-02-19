@@ -33,9 +33,16 @@ deleteNth ([20,37,20,21],1) // return [20,37,21]
 */
 
 function deleteNth(arr, n) {
-  let array = [];
+  const array = [];
+
   for (let i = 0; i < arr.length; i++) {
-    if (!array.includes(arr[i])) {
+    let count = 0;
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[i] === array[j]) {
+        count++;
+      }
+    }
+    if (count < n) {
       array.push(arr[i]);
     }
   }
