@@ -36,3 +36,12 @@ console.log(domainName('https://www.youtube.com')); // youtube
 console.log(domainName('http://github.com/nikitavasilev/codewars')); // github
 console.log(domainName('http://www.zombie-bites.com')); // zombie-bites
 console.log(domainName('https://www.cnet.com')); // cnet
+
+// Clever version:
+
+function domainName(url) {
+  url = url.replace("https://", '');
+  url = url.replace("http://", '');
+  url = url.replace("www.", ''); // fails if the domain finishes with 'www.'
+  return url.split('.')[0];
+}
