@@ -27,8 +27,20 @@ var result = solution("apples, pears # and bananas\ngrapes\nbananas !apples", ["
 
 function solution(input, markers) {
   let output = [];
+  let array = [];
   output = input.split('\n');
-  return output;
+
+  for (let i = 0; i < output.length; i++) {
+    for (let j = 0; j < output[i].length; j++) {
+      if (output[i][j] == markers[0] || output[i][j] == markers[1]) {
+        break;
+      } else {
+        array.push(output[i][j]);
+      }
+    }
+  }
+  console.log(input);
+  return array.join('');
 }
 
 console.log(solution("apples, pears # and bananas\ngrapes\nbananas !apples", ["#", "!"])); // "apples, pears\ngrapes\nbananas"
