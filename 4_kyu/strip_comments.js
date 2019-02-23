@@ -26,9 +26,9 @@ var result = solution("apples, pears # and bananas\ngrapes\nbananas !apples", ["
 */
 
 function solution(input, markers) {
-  for (let i = 0; i < array.length; i++) {
-    
-  }
+  let output = [];
+  output = input.split('\n');
+  return output;
 }
 
 console.log(solution("apples, pears # and bananas\ngrapes\nbananas !apples", ["#", "!"])); // "apples, pears\ngrapes\nbananas"
