@@ -29,8 +29,9 @@ function solution(input, markers) {
   for (let i = 0; i < markers.length; i++) {
     let regexp = new RegExp(markers[i] + '.*\n|$', 'g');
     input = input.replace(regexp, '\n');
+    input = input.replace(/[^\S\r\n]+$/gm, '');
   }
-  return input;
+  return input.trim();
 }
 
 console.log(solution("apples, pears # and bananas\ngrapes\nbananas !apples", ["#", "!"])); // "apples, pears\ngrapes\nbananas"
