@@ -26,21 +26,11 @@ var result = solution("apples, pears # and bananas\ngrapes\nbananas !apples", ["
 */
 
 function solution(input, markers) {
-  let output = [];
-  let array = [];
-  output = input.split('\n');
-
-  for (let i = 0; i < output.length; i++) {
-    for (let j = 0; j < output[i].length; j++) {
-      if (output[i][j] == markers[0] || output[i][j] == markers[1]) {
-        break;
-      } else {
-        array.push(output[i][j]);
-      }
-    }
+  for (let i = 0; i < markers.length; i++) {
+    let regexp = new RegExp(markers[i] + '.*\n|$', 'g');
+    input = input.replace(regexp, '\n');
   }
-  console.log(input);
-  return array.join('');
+  return input;
 }
 
 console.log(solution("apples, pears # and bananas\ngrapes\nbananas !apples", ["#", "!"])); // "apples, pears\ngrapes\nbananas"
