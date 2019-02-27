@@ -25,7 +25,7 @@ function solution(list) {
   for (let i = 0; i < list[list.length - 2]; i++) {
     for (let j = 1; j < list.length; j++) {
       if (list[i] / list[j]) {
-        
+        console.log(list[i]);
       }
     }
   }
