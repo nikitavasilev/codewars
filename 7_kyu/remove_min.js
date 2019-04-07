@@ -25,9 +25,10 @@
  */
 
 function removeSmallest(numbers) {
-  const min = numbers.indexOf(Math.min(...numbers));
-  numbers.splice(min, 1);
-  return numbers;
+  const cloneNumbersArr = [...numbers];
+  const min = cloneNumbersArr.indexOf(Math.min(...cloneNumbersArr));
+  cloneNumbersArr.splice(min, 1);
+  return cloneNumbersArr;
 }
 
 console.log(removeSmallest([1,2,3,4,5]));
