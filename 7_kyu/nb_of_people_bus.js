@@ -21,11 +21,11 @@ The second value in the first integer array is 0, since the bus is empty in the 
 
 // My dirty solution:
 
-var number = function(busStops) {
-  let inside, outside, i;
-  inside = [];
-  outside = [];
-  i = 0;
+const number = (busStops) => {
+  let inside = [];
+  let outside = [];
+
+  let i = 0;
   while (i < busStops.length) {
     inside.push(busStops[i][0]);
     outside.push(busStops[i][1]);
@@ -33,20 +33,21 @@ var number = function(busStops) {
   }
   inside = inside.reduce((a, b) => a + b, 0);
   outside = outside.reduce((a, b) => a + b, 0);
-  return (inside - outside);
-}
+  return inside - outside;
+};
 
 // A better solution:
 
-var number = function(busStops){
-  var totalPeople = 0;
-  for (var i=0; i<busStops.length; i++) {
+const number2 = (busStops) => {
+  let totalPeople = 0;
+  for (let i = 0; i < busStops.length; i++) {
     totalPeople += busStops[i][0];
     totalPeople -= busStops[i][1];
   }
   return totalPeople;
-}
+};
 
-number([[10,0],[3,5],[5,8]]); // 5
-number([[3,0],[9,1],[4,10],[12,2],[6,1],[7,10]]); // 17
-number([[3,0],[9,1],[4,8],[12,2],[6,1],[7,8]]); // 21
+number([[10, 0], [3, 5], [5, 8]]); // 5
+number([[3, 0], [9, 1], [4, 10], [12, 2], [6, 1], [7, 10]]); // 17
+number([[3, 0], [9, 1], [4, 8], [12, 2], [6, 1], [7, 8]]); // 21
+number2([[10, 0], [3, 5], [5, 8]]); // 5

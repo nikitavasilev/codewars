@@ -18,8 +18,8 @@ Notes:
 */
 
 function highAndLow(numbers) {
-  var words = numbers.split(' ').map(Number);
-  var str = Math.max(...words) + ' ' + Math.min(...words);
+  const words = numbers.split(' ').map(Number);
+  const str = `${Math.max(...words)} ${Math.min(...words)}`;
   return str;
 }
 

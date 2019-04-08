@@ -15,16 +15,16 @@ XO("zzoo") => false
 */
 
 function XO(str) {
-  let x, o, result;
-  x = str.match(/x/gi);
-  o = str.match(/o/gi);
+  const x = str.match(/x/gi);
+  const o = str.match(/o/gi);
+  let result;
 
   if (x === null && o === null) {
     result = true;
-  } else if ((x != null && o != null) && (x.length == o.length)) {
+  } else if (x != null && o != null && x.length === o.length) {
     result = true;
   } else {
-    result = false;    
+    result = false;
   }
   return result;
 }

@@ -1,6 +1,6 @@
 function abbrevName(name) {
-  name = name.split(' ');
-  const str = `${name[0].charAt(0)}.${name[1].charAt(0)}`;
+  const nameShorter = name.split(' ');
+  const str = `${nameShorter[0].charAt(0)}.${nameShorter[1].charAt(0)}`;
   return str.toUpperCase();
 }
 

@@ -51,10 +51,10 @@ function deleteNth(arr, n) {
 
 // Elegant solution:
 
-function deleteNth(arr, x) {
-  var cache = {};
-  return arr.filter(function(n) {
-    cache[n] = (cache[n]||0) + 1;
+function deleteNth2(arr, x) {
+  const cache = {};
+  return arr.filter((n) => {
+    cache[n] = (cache[n] || 0) + 1;
     return cache[n] <= x;
   });
 }
@@ -67,19 +67,21 @@ of times they already seen n in the past when looping through the array.
 Stuff in parens ( ) in javascript is evaulated as an expression.
 Here they're checking if property n (whatever is the current number in the loop)
 exists in the cache object. Javascript has a notion of falsy values: null,
-undefined, 0, NaN etc -- when testing these in a logical expression they are the equivalent of false.
+undefined, 0, NaN etc -- when testing these in a logical expression they are
+the equivalent of false.
 
 In the case that cache[n] doesn't exist, it will evaluate to 'undefined',
 and so the expression will become ( undefined || 0 ) resulting in 0 being returned (0 + 1).
 
 The idea is that if they are seeing n for the first time,
-then they want to set cache[n] = 1 initially - which is why has to be set to 0, so it results in 0+1 = 1.
+then they want to set cache[n] = 1 initially - which is why has to be set to 0,
+so it results in 0+1 = 1.
 
 The second time around if they see that number again, cache[n] already
 exists (its value is currently 1) and so (cache[n] || 0)
 evaluated to cache[n] + 1 or 1+1, and now cache[n] is now = 2.
 */
 
-console.log(deleteNth([1,1,1,1], 2)); // [1,1]
-console.log(deleteNth([20,37,20,21], 1)); // [20,37,21]
-console.log(deleteNth([1,1,3,3,7,2,2,2,2], 3)); // [1, 1, 3, 3, 7, 2, 2, 2]
+console.log(deleteNth([1, 1, 1, 1], 2)); // [1,1]
+console.log(deleteNth([20, 37, 20, 21], 1)); // [20,37,21]
+console.log(deleteNth2([1, 1, 3, 3, 7, 2, 2, 2, 2], 3)); // [1, 1, 3, 3, 7, 2, 2, 2]

@@ -26,28 +26,21 @@ var result = solution("apples, pears # and bananas\ngrapes\nbananas !apples", ["
 */
 
 function solution(input, markers) {
+  let res;
+
   for (let i = 0; i < markers.length; i++) {
     let regexp;
+
     if (markers[i] === '$' || markers[i] === '*') {
-      regexp = new RegExp('\\' + markers[i] + '.*\n|$', 'g');      
+      regexp = new RegExp(`\\${markers[i]}.*\n|$`, 'g');
     } else {
-      regexp = new RegExp(markers[i] + '.*\n|$', 'g');      
+      regexp = new RegExp(`${markers[i]}.*\n|$`, 'g');
     }
-    input = input.replace(regexp, '\n');
-    input = input.replace(/[^\S\r\n]+$/gm, '');
+    res = input.replace(regexp, '\n');
+    res = input.replace(/[^\S\r\n]+$/gm, '');
   }
-  return input.trim();
+  return res.trim();
 }
 
-console.log(solution("apples, pears # and bananas\ngrapes\nbananas !apples", ["#", "!"])); // "apples, pears\ngrapes\nbananas"
-console.log(solution("Q @b\nu\ne -e f g", ["@", "-"])); // "Q\nu\ne"
-
-// Clever solution:
-
-function solution(input, markers) {
-  return input.split('\n').map(
-    line => markers.reduce(
-      (line, marker) => line.split(marker)[0].trim(), line
-    )
-  ).join('\n');
-}
+console.log(solution('apples, pears # and bananas\ngrapes\nbananas !apples', ['#', '!'])); // "apples, pears\ngrapes\nbananas"
+console.log(solution('Q @b\nu\ne -e f g', ['@', '-'])); // "Q\nu\ne"

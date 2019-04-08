@@ -9,9 +9,9 @@ Example: The binary representation of 1234 is 10011010010,
 so the function should return 5 in this case
 */
 
-var countBits = function(n) {
-  var temp = (n >>> 0).toString(2);
-  var count = (temp.match(/1/g) || []).length;
+const countBits = (n) => {
+  const temp = (n >>> 0).toString(2);
+  const count = (temp.match(/1/g) || []).length;
   return count;
 };
 

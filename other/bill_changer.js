@@ -1,38 +1,36 @@
 function change(cash) {
-  let two, five, ten, amount;
-  two = 0;
-  five = 0;
-  ten = 0;
-  amount = cash;
+  let two = 0;
+  let five = 0;
+  let ten = 0;
+  let amount = cash;
 
   if (change < 2) {
     return null;
-  } else {
-  
-    while (amount >= 11) {
-      amount -= 10;
-      ten +=1;
-    }
-  
-    while (amount >= 7 && amount <= 11) {
+  }
+  while (amount >= 11) {
+    amount -= 10;
+    ten += 1;
+  }
+
+  while (amount >= 7 && amount <= 11) {
+    amount -= 5;
+    five += 1;
+  }
+
+  while (amount >= 2 && amount <= 6) {
+    if (amount === 5) {
       amount -= 5;
       five += 1;
+    } else {
+      amount -= 2;
+      two += 1;
     }
-  
-    while (amount >= 2 && amount <= 6) {
-      if (amount == 5) {
-        amount -= 5;
-        five += 1;
-      } else {
-        amount -= 2;
-        two += 1;
-      }
-    }
-  } 
+  }
+
   return {
-    two: two,
-    five: five,
-    ten: ten
+    two,
+    five,
+    ten,
   };
 }
 

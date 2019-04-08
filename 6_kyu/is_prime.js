@@ -26,7 +26,6 @@ You can assume you will be given an integer input.
 You can not assume that the integer will be only positive.
 You may be given negative numbers as well (or 0).
 */
-'use strict';
 
 function isPrime(num) {
   let result = false;

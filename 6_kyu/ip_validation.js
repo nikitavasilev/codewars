@@ -21,14 +21,14 @@ Invalid inputs:
 
 Note that leading zeros (e.g. 01.02.03.04) are considered invalid.
 */
-'use strict';
+
 
 function isValidIP(str) {
-  let string = str.split('.');
+  const string = str.split('.');
   const strElementLength = string.map(w => w.length);
-  const ifLeadingZero = string.map((s) => s[0]);
+  const ifLeadingZero = string.map(s => s[0]);
   let isValid = true;
-  
+
   for (let i = 0; i < string.length; i++) {
     if (str.match(/^[0-9.]+$/) === null || string[i] === '') {
       isValid = false;
@@ -46,7 +46,7 @@ function isValidIP(str) {
 }
 
 console.log(isValidIP('1.2.3.4')); // true
-console.log(isValidIP('123.45.67.89')); //true
+console.log(isValidIP('123.45.67.89')); // true
 console.log(isValidIP('1.2.3')); // false
 console.log(isValidIP('1.2.3.4.5')); // false
 console.log(isValidIP('123.456.78.90')); // false
@@ -66,6 +66,8 @@ console.log(isValidIP('0.0.0.0')); // true
 
 // Savage version:
 
-function isValidIP(str) {
+function isValidIP2(str) {
   return /^(([1-9]?\d|1\d\d|2[0-4]\d|25[0-5])(\.(?!$)|$)){4}$/.test(str);
 }
+
+console.log(isValidIP2('0.0.0.0')); // true

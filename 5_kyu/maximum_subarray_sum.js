@@ -23,9 +23,8 @@ Note that the empty list or array is also a valid sublist/subarray.
 // (max_so_far is used for this).
 // Each time we get a positive sum compare it with max_so_far
 // and update max_so_far if it is greater than max_so_far
-'use strict';
 
-var maxSequence = function(arr) {
+const maxSequence = (arr) => {
   let maxSoFar = 0;
   let maxEndingHere = 0;
 
@@ -59,14 +58,14 @@ var maxSequence = function(arr) {
   } else if (arr.length === 1 && !(arr[0] < 0)) {
     return arr[0];
   }
-  
-  maximum = 0;    
+
+  maximum = 0;
   for (let j = arr.length -1; j >= 0; j--) {
     maximum += arr[j];
     maxFromBegin.unshift(maximum);
   }
   const beginningIndex = maxFromBegin.indexOf(Math.max(...maxFromBegin));
-  
+
   maximum = 0;
   for (let i = 0; i < arr.length; i++) {
     maximum += arr[i];
