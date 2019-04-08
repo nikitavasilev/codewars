@@ -1,0 +1,25 @@
+{
+  "name": "codewars",
+  "version": "1.0.0",
+  "description": "katas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikitavasilev/codewars.git"
+  },
+  "author": "Nikita Vasilev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nikitavasilev/codewars/issues"
+  },
+  "homepage": "https://github.com/nikitavasilev/codewars#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-import": "^2.16.0"
+  }
+}
